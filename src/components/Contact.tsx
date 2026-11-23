@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import { ArrowUp, ArrowUpRight, Check, Copy, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Check, Copy, Download, Github, Facebook, Mail } from 'lucide-react';
 import { profile } from '../data/portfolio';
 import { scrollToId } from '../lib/scroll';
 import SectionLabel from './ui/SectionLabel';
@@ -53,7 +53,7 @@ function BackToTop() {
 }
 
 const links = [
-  { label: 'LinkedIn', href: profile.links.linkedin, icon: Linkedin, note: 'Connect' },
+  { label: 'Facebook', href: profile.links.facebook, icon: Facebook, note: 'Connect' },
   { label: 'GitHub', href: profile.links.github, icon: Github, note: '@raihanns143' },
   { label: 'Email', href: `mailto:${profile.email}`, icon: Mail, note: 'Write to me' },
   { label: 'Résumé', href: profile.resume, icon: Download, note: 'PDF', download: true },

@@ -11,7 +11,7 @@ export const profile = {
   location: 'Rajshahi, Bangladesh',
   timezone: 'Asia/Dhaka',
   links: {
-    linkedin: 'https://www.linkedin.com/in/iamraihanns/',
+    linkedin: 'https://www.facebook.com/iamraihanns/',
     github: 'https://github.com/raihanns143',
     facebook: 'https://www.facebook.com/iamraihanns',
   },
