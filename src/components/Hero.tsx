@@ -67,14 +67,6 @@ export default function Hero({ ready }: { ready: boolean }) {
   const rotX = useTransform(py, (v) => v * -0.9);
   const nameShiftX = useTransform(px, (v) => v * -1.2);
 
-  const [desktop, setDesktop] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches);
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
-    const on = () => setDesktop(mq.matches);
-    mq.addEventListener('change', on);
-    return () => mq.removeEventListener('change', on);
-  }, []);
-
   // Spin a full turn whenever the theme changes (skip the first render).
   const theme = useTheme();
   const spin = useAnimationControls();
@@ -142,33 +134,33 @@ export default function Hero({ ready }: { ready: boolean }) {
       />
       <DotField />
 
-      {/* Desktop film: big, anchored to the floor, standing in front of the giant name */}
-      {desktop && (
+      {/* Film: on mobile positioned on the right side; on desktop anchored to floor */}
       <motion.div
         style={{ y: filmY }}
-        className="pointer-events-auto absolute right-[2vw] bottom-0 z-10 h-[calc(100svh-4.5rem)] max-h-[1040px] lg:right-[5vw]"
+        className="pointer-events-none absolute z-10 flex items-center justify-end md:pointer-events-auto md:block
+          right-0 xs:right-1 sm:right-2 top-1/2 -translate-y-[46%] w-[52vw] max-w-[215px] xs:max-w-[230px]
+          md:top-auto md:bottom-0 md:translate-y-0 md:h-[calc(100svh-4.5rem)] md:max-h-[1040px] md:min-h-0 md:w-auto md:max-w-none md:right-[2vw] lg:right-[5vw]"
       >
         {film}
-        <div className="absolute bottom-[22%] -left-[16%] z-20">
+        <div className="absolute bottom-[22%] -left-[16%] z-20 hidden md:block">
           <RotatingBadge ready={ready} />
         </div>
       </motion.div>
-      )}
 
       <div className="relative flex flex-1 flex-col justify-center pb-6 md:pb-20">
-        <motion.div style={{ y: textY, opacity: fade }} className="relative z-20 md:max-w-[52%]">
+        <motion.div style={{ y: textY, opacity: fade }} className="relative z-20 max-w-[50%] xs:max-w-[48%] sm:max-w-[52%] md:max-w-[52%]">
           <motion.div
             {...fadeIn(0.05)}
-            className="inline-flex w-fit items-center gap-3 rounded-full border border-line bg-bg/70 px-4 py-1.5 text-[12px] text-muted backdrop-blur-sm"
+            className="inline-flex w-fit items-center gap-2 sm:gap-3 rounded-full border border-line bg-bg/70 px-3 py-1 sm:px-4 sm:py-1.5 text-[10.5px] sm:text-[12px] text-muted backdrop-blur-sm"
           >
             <span className="text-fg">{profile.availability}</span>
             <span className="hidden h-3 w-px bg-line sm:block" />
             <span className="hidden sm:inline">{profile.location}</span>
           </motion.div>
 
-          <motion.p {...fadeIn(0.15)} className="mt-8 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-            <span className="font-serif text-[clamp(1.9rem,3.4vw,3.2rem)] leading-none italic">Hello, I'm</span>
-            <span className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
+          <motion.p {...fadeIn(0.15)} className="mt-5 sm:mt-8 flex flex-wrap items-baseline gap-x-3 sm:gap-x-4 gap-y-1">
+            <span className="font-serif text-[clamp(1.7rem,3.4vw,3.2rem)] leading-none italic">Hello, I'm</span>
+            <span className="font-mono text-[9.5px] sm:text-[11px] tracking-[0.18em] text-muted uppercase">
               <span className="text-faint">— </span>
               <span className="text-fg">
                 <RotatingRole start={ready} />
@@ -180,7 +172,7 @@ export default function Hero({ ready }: { ready: boolean }) {
         {/* The giant name. She stands in front of it (z-10 film vs z-0 name). */}
         <motion.h1
           style={{ x: nameX }}
-          className="relative z-0 -mx-1 mt-2 text-[18.6vw] md:text-[clamp(4.4rem,20.5vw,22rem)] leading-[0.8] font-semibold tracking-[-0.065em] whitespace-nowrap select-none md:-mx-2"
+          className="relative z-0 -mx-1 mt-1 sm:mt-2 text-[18.6vw] md:text-[clamp(4.4rem,20.5vw,22rem)] leading-[0.8] font-semibold tracking-[-0.065em] whitespace-nowrap select-none md:-mx-2"
           aria-label={`Hello, I'm ${profile.name}`}
         >
           <motion.span aria-hidden="true" className="inline-block" style={{ x: nameShiftX }}>
@@ -201,12 +193,12 @@ export default function Hero({ ready }: { ready: boolean }) {
           </motion.span>
         </motion.h1>
 
-        <motion.div style={{ y: textY, opacity: fade }} className="relative z-20 mt-8 md:mt-10 md:max-w-[46%] lg:max-w-[40%]">
-          <motion.p {...fadeIn(0.7)} className="max-w-[36ch] text-[clamp(1.05rem,1.5vw,1.35rem)] leading-[1.4] tracking-[-0.015em] text-muted">
+        <motion.div style={{ y: textY, opacity: fade }} className="relative z-20 mt-5 sm:mt-8 md:mt-10 max-w-[50%] xs:max-w-[48%] sm:max-w-[52%] md:max-w-[46%] lg:max-w-[40%]">
+          <motion.p {...fadeIn(0.7)} className="max-w-[34ch] text-[12.5px] xs:text-[13px] sm:text-[clamp(1.05rem,1.5vw,1.35rem)] leading-[1.36] sm:leading-[1.4] tracking-[-0.015em] text-muted">
             I build practical <span className="text-fg">web applications</span>, digital products, and <span className="text-fg">IoT systems</span>. I enjoy solving real-world problems through technology.
           </motion.p>
 
-          <motion.div {...fadeIn(0.9)} className="mt-8 flex flex-wrap items-center gap-3">
+          <motion.div {...fadeIn(0.9)} className="mt-4 sm:mt-8 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3">
             <Magnetic>
               <a
                 href="#projects"
@@ -214,31 +206,24 @@ export default function Hero({ ready }: { ready: boolean }) {
                   e.preventDefault();
                   scrollToId('projects');
                 }}
-                className="group inline-flex items-center gap-3 rounded-full bg-fg px-6 py-3.5 text-sm font-medium text-bg"
+                className="group inline-flex items-center gap-2 sm:gap-3 rounded-full bg-fg px-3.5 py-2 sm:px-6 sm:py-3.5 text-[11.5px] sm:text-sm font-medium text-bg whitespace-nowrap"
               >
                 View selected work
-                <ArrowDownRight size={16} className="transition-transform duration-500 group-hover:rotate-[-45deg]" />
+                <ArrowDownRight size={14} className="transition-transform duration-500 group-hover:rotate-[-45deg]" />
               </a>
             </Magnetic>
             <Magnetic>
               <a
                 href={profile.resume}
                 download
-                className="group inline-flex items-center gap-3 rounded-full border border-line bg-bg/70 px-6 py-3.5 text-sm font-medium backdrop-blur-sm transition-colors hover:border-fg"
+                className="group inline-flex items-center gap-2 sm:gap-3 rounded-full border border-line bg-bg/70 px-3.5 py-2 sm:px-6 sm:py-3.5 text-[11.5px] sm:text-sm font-medium backdrop-blur-sm transition-colors hover:border-fg whitespace-nowrap"
               >
                 Download résumé
-                <ArrowUpRight size={16} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight size={14} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </Magnetic>
           </motion.div>
         </motion.div>
-
-        {/* Mobile film: centered and proportional under the intro */}
-        {!desktop && (
-          <div className="relative z-10 -mx-4 mt-8 flex justify-center items-center h-[52vh] max-h-[460px] min-h-[320px] overflow-visible">
-            {film}
-          </div>
-        )}
       </div>
 
       <motion.div

@@ -37,9 +37,9 @@ export default function HeroPortrait({ play }: { play: boolean }) {
   };
 
   return (
-    <div className={`hero-film relative mx-auto h-full w-fit ${play || reduce ? 'is-idle' : ''}`}>
+    <div className={`hero-film relative mx-auto h-auto w-fit md:h-full ${play || reduce ? 'is-idle' : ''}`}>
       <div aria-hidden="true" className="hero-film__pool" />
-      <picture className="block h-full w-auto">
+      <picture className="block h-auto w-auto max-h-[50vh] max-w-full md:h-full md:max-h-none md:max-w-none">
         <source srcSet={`${PORTRAIT.webp}${errorCount > 0 ? `?retry=${errorCount}` : ''}`} type="image/webp" />
         <img
           ref={imgRef}
@@ -53,7 +53,7 @@ export default function HeroPortrait({ play }: { play: boolean }) {
           onLoad={() => setLoaded(true)}
           onError={handleError}
           draggable={false}
-          className={`hero-film__media block h-full w-auto max-w-none select-none object-contain pointer-events-none transition-opacity duration-300 ${
+          className={`hero-film__media block h-auto max-h-[50vh] w-auto max-w-full select-none object-contain object-right pointer-events-none transition-opacity duration-300 md:h-full md:max-h-none md:max-w-none ${
             loaded ? 'opacity-100' : 'opacity-90'
           }`}
           style={{
