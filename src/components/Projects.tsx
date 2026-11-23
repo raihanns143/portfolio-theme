@@ -166,11 +166,11 @@ function CaseStudy({ p, onClose, onNext }: { p: Project; onClose: () => void; on
         transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
         className="absolute inset-x-0 bottom-0 h-[94svh] overflow-y-auto overscroll-contain rounded-t-[20px] border-t border-line bg-bg"
       >
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-bg/90 px-4 py-4 backdrop-blur md:px-10">
-          <span className="font-mono text-[11px] tracking-[0.2em] text-muted uppercase">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-bg/90 px-4 py-3 backdrop-blur md:px-10 md:py-4">
+          <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.2em] text-muted uppercase">
             Case study {p.index} / 0{projects.length}
           </span>
-          <button ref={closeRef} type="button" onClick={onClose} aria-label="Close case study" className="grid h-10 w-10 place-items-center rounded-full border border-line transition-colors hover:bg-fg hover:text-bg">
+          <button ref={closeRef} type="button" onClick={onClose} aria-label="Close case study" className="grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-full border border-line transition-colors hover:bg-fg hover:text-bg">
             <X size={16} />
           </button>
         </div>
@@ -187,7 +187,7 @@ function CaseStudy({ p, onClose, onNext }: { p: Project; onClose: () => void; on
             <div className="font-mono text-[11px] tracking-[0.2em] text-muted uppercase">
               {p.kind} · {p.year}
             </div>
-            <h2 id="case-title" className="mt-4 text-[clamp(2.6rem,8vw,7.5rem)] leading-[0.9] font-medium tracking-[-0.055em]">
+            <h2 id="case-title" className="mt-4 text-[clamp(2.1rem,7.5vw,7.5rem)] leading-[0.92] font-medium tracking-[-0.05em] break-words">
               {p.title}
             </h2>
             <p className="mt-8 max-w-[52ch] text-[clamp(1.1rem,1.6vw,1.4rem)] leading-[1.45] text-muted">{p.summary}</p>
@@ -196,7 +196,7 @@ function CaseStudy({ p, onClose, onNext }: { p: Project; onClose: () => void; on
               <ProjectVisual motif={p.motif} cover />
             </div>
 
-            <dl className="mt-14 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 md:grid-cols-4">
+            <dl className="mt-14 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 md:grid-cols-4">
               {p.metrics.map((m) => (
                 <div key={m.label} className="flex flex-col-reverse bg-bg p-6">
                   <dt className="mt-3 text-sm text-muted">{m.label}</dt>
@@ -240,18 +240,18 @@ function CaseStudy({ p, onClose, onNext }: { p: Project; onClose: () => void; on
                     </li>
                   ))}
                 </ul>
-                <div className="mt-10 flex flex-wrap gap-3">
+                <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
                   {p.github ? (
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-fg px-5 py-3 text-sm font-medium text-bg">
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-fg px-5 py-3 text-sm font-medium text-bg">
                       <Github size={15} /> View on GitHub <ArrowUpRight size={14} />
                     </a>
                   ) : (
-                    <span className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm text-muted">
+                    <span className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-5 py-3 text-sm text-muted">
                       <Lock size={14} /> Repository is private for now
                     </span>
                   )}
                   {p.live && (
-                    <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm">
+                    <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-5 py-3 text-sm">
                       Live site <ArrowUpRight size={14} />
                     </a>
                   )}

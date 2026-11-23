@@ -104,7 +104,7 @@ export default function Hero({ ready }: { ready: boolean }) {
 
   const film = (
     <motion.div
-      className="group relative h-full"
+      className="group relative h-full flex items-center justify-center md:block"
       initial={{ clipPath: 'inset(100% -40% 0% -40%)' }}
       animate={ready ? { clipPath: 'inset(-100% -40% 0% -40%)' } : {}}
       transition={{ duration: 1.6, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
@@ -112,14 +112,14 @@ export default function Hero({ ready }: { ready: boolean }) {
     >
       {/* she turns to face you → a full turn on every light switch → follows the cursor */}
       <motion.div
-        className="h-full"
+        className="h-full w-auto flex items-center justify-center md:block"
         initial={{ rotateY: reduce ? 0 : -30, z: reduce ? 0 : -140 }}
         animate={ready ? { rotateY: 0, z: 0 } : {}}
         transition={{ duration: 2.2, delay: 0.4, ease: EASE }}
         style={{ transformStyle: 'preserve-3d' }}
       >
-        <motion.div animate={spin} className="h-full" style={{ transformStyle: 'preserve-3d' }}>
-          <motion.div style={{ rotateY: rotY, rotateX: rotX, transformStyle: 'preserve-3d' }} className="relative h-full">
+        <motion.div animate={spin} className="h-full w-auto flex items-center justify-center md:block" style={{ transformStyle: 'preserve-3d' }}>
+          <motion.div style={{ rotateY: rotY, rotateX: rotX, transformStyle: 'preserve-3d' }} className="relative h-full w-auto flex items-center justify-center md:block">
             <HeroPortrait play={ready} />
           </motion.div>
         </motion.div>
@@ -233,8 +233,12 @@ export default function Hero({ ready }: { ready: boolean }) {
           </motion.div>
         </motion.div>
 
-        {/* Mobile film: full width under the intro */}
-        {!desktop && <div className="relative z-10 -mx-4 mt-10 h-[min(78svh,140vw)]">{film}</div>}
+        {/* Mobile film: centered and proportional under the intro */}
+        {!desktop && (
+          <div className="relative z-10 -mx-4 mt-8 flex justify-center items-center h-[52vh] max-h-[460px] min-h-[320px] overflow-visible">
+            {film}
+          </div>
+        )}
       </div>
 
       <motion.div

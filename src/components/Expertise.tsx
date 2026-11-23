@@ -76,9 +76,9 @@ export default function Expertise() {
         </div>
       </div>
 
-      <Reveal className="-mx-4 mb-20 md:-mx-8 md:mb-28">
+      <Reveal className="-mx-4 mb-16 md:-mx-8 md:mb-28">
         <TechOrbit rings={ORBITS} />
-        <p className="mt-2 text-center font-mono text-[10px] tracking-[0.22em] text-faint uppercase">Scroll or drag to turn me · {ALL_SKILLS.length} skills in orbit</p>
+        <p className="mt-2 text-center font-mono text-[9px] sm:text-[10px] tracking-[0.2em] text-faint uppercase px-4">Scroll or drag to turn me · {ALL_SKILLS.length} skills in orbit</p>
       </Reveal>
 
       <div className="grid gap-12 md:grid-cols-12 md:gap-6">

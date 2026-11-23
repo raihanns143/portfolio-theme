@@ -24,7 +24,7 @@ function CopyEmail() {
           window.location.href = `mailto:${profile.email}`;
         }
       }}
-      className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-muted transition-colors hover:border-fg hover:text-fg"
+      className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-muted transition-colors hover:border-fg hover:text-fg"
       aria-live="polite"
     >
       {copied ? <Check size={14} /> : <Copy size={14} />}
@@ -84,12 +84,12 @@ export default function Contact() {
                 <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-right scale-x-0 bg-fg transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:origin-left group-hover:scale-x-100" />
               </a>
             </Magnetic>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <CopyEmail />
               <Magnetic>
                 <a
                   href={`mailto:${profile.email}?subject=${encodeURIComponent(`Hello ${profile.name} — let's work together`)}`}
-                  className="group inline-flex items-center gap-2 rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
                 >
                   Start a conversation
                   <ArrowUpRight size={14} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

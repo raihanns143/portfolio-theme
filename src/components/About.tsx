@@ -81,9 +81,9 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-[2px] border border-line bg-line md:mt-24 md:grid-cols-4">
+      <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-[2px] border border-line bg-line sm:grid-cols-2 md:mt-24 md:grid-cols-4">
         {stats.map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.08} className="bg-bg p-6 md:p-8">
+          <Reveal key={s.label} delay={i * 0.08} className="bg-bg p-5 sm:p-6 md:p-8">
             <div className="text-[clamp(2.6rem,5vw,4.5rem)] leading-none font-medium tracking-[-0.05em]">
               <Counter {...s} />
             </div>
