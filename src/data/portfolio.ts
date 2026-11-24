@@ -17,8 +17,7 @@ export const profile = {
   },
   resume: '/assets/Abu_Raihan_Resume.pdf',
   portrait: {
-    src: '/assets/portrait-720.webp',
-    srcSet: '/assets/portrait-420.webp 420w, /assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w',
+    src: '/assets/hero-portrait.png',
     width: 1100,
     height: 1034,
     alt: 'Portrait of Abu Raihan',

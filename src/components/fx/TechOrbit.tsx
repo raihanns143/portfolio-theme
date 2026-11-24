@@ -13,7 +13,7 @@ import { prefersReducedMotion } from '../../lib/theme';
  * in every browser. Drag or arrow keys spin her too.
  */
 
-const SPRITE = { src: '/assets/spin-sprite.webp', frames: 80, cols: 10, fw: 300, fh: 830 };
+const SPRITE = { src: '/assets/spin-sprite.png', frames: 80, cols: 10, fw: 300, fh: 830 };
 const PERSPECTIVE = 1500;
 
 type Ring = {
